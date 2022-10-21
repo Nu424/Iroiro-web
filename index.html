@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF4in1</title>
+</head>
+
+<body>
+    <h1>PDF4in1</h1>
+    <form id="form" action="https://us-central1-sukureipingu-338617.cloudfunctions.net/pdf4in1_01" enctype="multipart/form-data">
+        <!-- method="post" enctype="multipart/form-data"> -->
+        <input id="fileInput" type="file" name="pdffile" accept="application/pdf">
+        <input id="submitButton" type="button" value="送信">
+    </form>
+
+    <script>
+
+        const form = document.getElementById("form")
+        const submitButton = document.getElementById("submitButton")
+
+        submitButton.onclick = () => {
+            if (document.getElementById("fileInput").files.length === 0) { return }
+            const formData = new FormData(form) // フォームのオブジェクトをぶち入れるだけでフォームデータができあがる…！うれしい！
+            const actionURL = form.getAttribute("action")
+            const options = {
+                method: "POST",
+                body: formData
+            }
+            fetch(actionURL, options).then((res) => {
+                console.log(res.status)
+                if (res.status === 200) {
+                    res.blob().then((myBlob) => {
+                        const a = document.createElement("a")
+                        document.body.appendChild(a)
+                        a.download = `${fileName()}_4in1.pdf`
+                        const url = URL.createObjectURL(myBlob)
+                        a.href = url
+                        a.click()
+                        a.remove()
+                        URL.revokeObjectURL(url)
+                    })
+                }
+            })
+        }
+
+        function fileName(){
+            return baseName(document.getElementById("fileInput").files[0].name)
+        }
+        // ---よく使うようなコード部分
+        function formatDate() {
+            const today = new Date()
+            return today.getUTCFullYear()
+                + ('0' + (today.getUTCMonth() + 1)).slice(-2)
+                + ('0' + today.getUTCDate()).slice(-2)
+                + '_' + ('0' + today.getUTCHours()).slice(-2)
+                + ('0' + today.getUTCMinutes()).slice(-2)
+                + ('0' + today.getUTCSeconds()).slice(-2)
+        }
+
+        function baseName(str) {
+            // ファイル名だけを取り出す。
+            let base = new String(str).substring(str.lastIndexOf('/') + 1)
+            if (base.lastIndexOf(".") != -1){
+                base = base.substring(0, base.lastIndexOf("."))
+            }
+            return base
+        }
+    </script>
+</body>
+
+</html>
