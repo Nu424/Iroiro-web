@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ごちゃまぜAPIのテスト</title>
+</head>
+
+<body>
+    <h1>ごちゃまぜAPIのテスト</h1>
+    <p>①ごちゃまぜにする文章を入力する。</p>
+    <textarea id="inputText" rows="5" cols="30">母にご飯ってレンジで何分か聞いてくれ</textarea>
+    <p>②ごちゃまぜにする方法を選択する。</p>
+    <select id="inputMode" name="example2" size="3">
+        <option value="subclass" selected>細かい品詞の分類を意識してやる</option>
+        <option value="normal">大まかな品詞の分類でやる</option>
+        <option value="bunsetsu">文節区切りでやる</option>
+    </select>
+    <p>
+        <button onclick="apitest()">変換する</button>
+    </p>
+    <p>↓結果</p>
+    <textarea id="outputText" rows="5" cols="30"></textarea>
+</body>
+<script>
+    function apitest() {
+        alert("もううごきません...")
+//         const text = document.querySelector("#inputText").value
+//         const mode = document.querySelector("#inputMode").value
+//         const url = `https://gochama-api.herokuapp.com/?mode=${mode}&text=${text}`
+//         // console.log(url)
+//         fetch(url).then((res) => {
+//             return res.json()
+//         }).then((res) => {
+//             document.querySelector("#outputText").value = res.text
+//         }).catch((e) => {
+//             console.log(e)
+//         })
+    }
+</script>
+
+</html>
