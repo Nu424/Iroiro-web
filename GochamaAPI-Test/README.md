@@ -1,4 +1,8 @@
 # GochamaAPI-Test
+ごちゃまぜAPIのテストサイトで~~す。~~した。
+以下は過去の情報です。
+```
+# GochamaAPI-Test
 ごちゃまぜAPIのテストサイトです。
 https://nu424.github.io/GochamaAPI-Test/
 ## ごちゃまぜAPIとは
@@ -13,3 +17,4 @@ MeCabで単語に区切っていろいろやります。
 - `normal` 単純に単語の品詞だけを見ます。
 - `subclass` 単語の品詞の細かい分類も意識してごちゃまぜにします。
 - `bunsetsu` 文節ごとに区切って、後はランダムにごちゃまぜします。
+```
