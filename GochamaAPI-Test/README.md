@@ -1,5 +1,5 @@
 # GochamaAPI-Test
-ごちゃまぜAPIのテストサイトで~~す。~~した。
+ごちゃまぜAPIのテストサイトで ~~す。~~ した。
 以下は過去の情報です。
 ```
 # GochamaAPI-Test
